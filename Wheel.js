@@ -130,8 +130,6 @@ export default class WheelPicker extends PureComponent {
                                         height: +this.props.itemHeight,
                                         width: Dimensions.get('window').width,
                                         justifyContent: 'center',
-                                        borderColor:'red',
-                                        borderWidth: 2,
                                     },
                                     this.props.itemContainerStyle,
                                 ]}
