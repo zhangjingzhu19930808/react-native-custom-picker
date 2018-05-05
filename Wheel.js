@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { AppSizes } from '../../theme';
 import { View, PanResponder, Animated, Dimensions } from 'react-native';
 import propTypes from 'prop-types';
 

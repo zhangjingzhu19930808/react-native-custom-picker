@@ -5,7 +5,7 @@
  * */
 import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native';
-import { scaleSize } from '@constants/ScreenUtil';
+import { scaleSize } from './ScreenUtil';
 import Wheel from './Wheel';
 import propTypes from 'prop-types';
 
