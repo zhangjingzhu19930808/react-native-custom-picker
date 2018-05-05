@@ -8,6 +8,7 @@ import { View, Text, StyleSheet, Animated, TouchableOpacity, Dimensions } from '
 import { scaleSize } from './ScreenUtil';
 import Wheel from './Wheel';
 import propTypes from 'prop-types';
+import MyStatusBar from './MyStatusBar';
 
 export default class WheelPicker extends PureComponent {
 
@@ -109,6 +110,7 @@ export default class WheelPicker extends PureComponent {
                     this.props.maskContainerStyle,
                 ]}
             >
+                <MyStatusBar />
                 <TouchableOpacity
                     onPress={() => {
                         this.disMissPicker();

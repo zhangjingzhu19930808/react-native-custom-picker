@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, PanResponder, Animated, Dimensions } from 'react-native';
+import { View, PanResponder, Animated, Dimensions, ToastAndroid } from 'react-native';
 import propTypes from 'prop-types';
 
 let startTime = 0;
@@ -104,41 +104,43 @@ export default class WheelPicker extends PureComponent {
 
     getDateIndex = () => this.index;
 
-    render = () => (
-        <View
-            style={[
-                {
-                    flex: 1,
-                    backgroundColor: this.props.wheelBackgroundColor || '#FFF',
-                },
-                this.props.wheelStyle
-            ]}
-            {...this._panResponder.panHandlers}
-        >
-            <Animated.View
-                style={{
-                    position: 'absolute',
-                    top: this.state.top,
-                }}
+    render = () => {
+        return (
+            <View
+                style={[
+                    {
+                        flex: 1,
+                        backgroundColor: this.props.wheelBackgroundColor || '#FFF',
+                    },
+                    this.props.wheelStyle
+                ]}
+                {...this._panResponder.panHandlers}
             >
-                {
-                    this.props.data && this.props.data.map((item, index) => (
-                        <View
-                            style={[
-                                {
-                                    height: this.props.itemHeight,
-                                    width: Dimensions.get('window').width,
-                                    justifyContent: 'center',
-                                },
-                                this.props.itemContainerStyle,
-                            ]}
-                            key={index}
-                        >
-                            { this.props.renderItem(item, index) }
-                        </View>
-                    ))
-                }
-            </Animated.View>
-        </View>
-    );
+                <Animated.View
+                    style={{
+                        position: 'absolute',
+                        top: this.state.top,
+                    }}
+                >
+                    {
+                        this.props.data && this.props.data.map((item, index) => (
+                            <View
+                                style={[
+                                    {
+                                        height: +this.props.itemHeight,
+                                        width: Dimensions.get('window').width,
+                                        justifyContent: 'center',
+                                    },
+                                    this.props.itemContainerStyle,
+                                ]}
+                                key={index}
+                            >
+                                { this.props.renderItem(item, index) }
+                            </View>
+                        ))
+                    }
+                </Animated.View>
+            </View>
+        );
+    }
 }
