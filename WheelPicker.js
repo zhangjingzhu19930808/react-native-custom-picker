@@ -4,7 +4,7 @@
  * this component is a wheel picker, can be used in android &ios
  * */
 import React, { PureComponent } from 'react';
-import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Animated, TouchableOpacity, Dimensions } from 'react-native';
 import { scaleSize } from './ScreenUtil';
 import Wheel from './Wheel';
 import propTypes from 'prop-types';
