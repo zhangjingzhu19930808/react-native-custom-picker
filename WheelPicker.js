@@ -93,9 +93,6 @@ export default class WheelPicker extends PureComponent {
     };
 
     render = () => {
-        console.log('wheelPanelHeight: ', this.props.wheelPanelHeight);
-        console.log('itemHeight: ', this.props.itemHeight);
-        console.log('final: ', (this.props.wheelPanelHeight - this.props.itemHeight) / 2);
         return (
             // 遮罩层
             <Animated.View
@@ -193,7 +190,7 @@ export default class WheelPicker extends PureComponent {
                         {/* top line */}
                         <View
                             style={[
-                                { top: (this.props.wheelPanelHeight - this.props.itemHeight) / 2 },
+                                { top: (this.props.wheelPanelHeight - +this.props.itemHeight) / 2 },
                                 styles.select_line,
                                 this.props.topLineStyle,
                             ]}
@@ -201,7 +198,7 @@ export default class WheelPicker extends PureComponent {
                         {/* bottom line */}
                         <View
                             style={[
-                                { top: (this.props.wheelPanelHeight + this.props.itemHeight) / 2 },
+                                { top: (this.props.wheelPanelHeight + +this.props.itemHeight) / 2 },
                                 styles.select_line,
                                 this.props.bottomLineStyle,
                             ]}

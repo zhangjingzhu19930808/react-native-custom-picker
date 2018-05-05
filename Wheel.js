@@ -58,8 +58,8 @@ export default class WheelPicker extends PureComponent {
             },
             onPanResponderRelease: (evt, gestureState) => {
                 const time = new Date().getTime() - startTime;
-                const endTop = 0 - ((this.props.itemHeight * this.props.data.length)
-                    - ((this.props.wheelPanelHeight + this.props.itemHeight) / 2)) || 0;
+                const endTop = 0 - ((+this.props.itemHeight * this.props.data.length)
+                    - ((this.props.wheelPanelHeight + +this.props.itemHeight) / 2)) || 0;
                 if (time < 300) {
                     const distance = gestureState.dy * (this.sensitivity || 1);
                     const speed = Math.abs(distance) / time;
@@ -68,17 +68,17 @@ export default class WheelPicker extends PureComponent {
                     this.currentY = destination;
                 }
                 this.currentY += gestureState.dy;
-                const index = ~~((this.initialTop - this.currentY) / this.props.itemHeight);
-                const outItem = ((this.initialTop - this.currentY) % this.props.itemHeight) || 0;
+                const index = ~~((this.initialTop - this.currentY) / +this.props.itemHeight);
+                const outItem = ((this.initialTop - this.currentY) % +this.props.itemHeight) || 0;
                 if (this.currentY > this.initialTop) {  // 下拉回弹
                     this.currentY = this.initialTop;
                     this.index = 0;
                 } else if (this.currentY < endTop) {  // 上拉回弹
                     this.currentY = endTop;
                     this.index = this.props.data.length - 1;
-                } else if (outItem > this.props.itemHeight / 2) {
+                } else if (outItem > +this.props.itemHeight / 2) {
                     // 如果超出部分 > itemHeight 一半
-                    this.currentY -= (this.props.itemHeight - outItem);
+                    this.currentY -= (+this.props.itemHeight - outItem);
                     this.index = index + 1;
                 } else {
                     this.currentY += outItem;
@@ -130,6 +130,8 @@ export default class WheelPicker extends PureComponent {
                                         height: +this.props.itemHeight,
                                         width: Dimensions.get('window').width,
                                         justifyContent: 'center',
+                                        borderColor:'red',
+                                        borderWidth: 2,
                                     },
                                     this.props.itemContainerStyle,
                                 ]}
