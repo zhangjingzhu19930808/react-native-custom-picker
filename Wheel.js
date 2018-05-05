@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AppSizes } from '../../theme';
-import { View, PanResponder, Animated } from 'react-native';
+import { View, PanResponder, Animated, Dimensions } from 'react-native';
 import propTypes from 'prop-types';
 
 let startTime = 0;
@@ -22,7 +22,7 @@ export default class WheelPicker extends PureComponent {
 
     static defaultProps = {
         renderItem: null,
-        wheelPanelHeight: AppSizes.screen.height * 0.3,
+        wheelPanelHeight: Dimensions.get('window').height * 0.3,
     };
 
     constructor(props) {
@@ -128,7 +128,7 @@ export default class WheelPicker extends PureComponent {
                             style={[
                                 {
                                     height: this.props.itemHeight,
-                                    width: AppSizes.screen.width,
+                                    width: Dimensions.get('window').width,
                                     justifyContent: 'center',
                                 },
                                 this.props.itemContainerStyle,

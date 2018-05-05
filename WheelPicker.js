@@ -4,7 +4,6 @@
  * this component is a wheel picker, can be used in android &ios
  * */
 import React, { PureComponent } from 'react';
-import { AppColors, AppStyles, AppSizes } from '../../theme';
 import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native';
 import { scaleSize } from '@constants/ScreenUtil';
 import Wheel from './Wheel';
@@ -38,7 +37,7 @@ export default class WheelPicker extends PureComponent {
     };
 
     static defaultProps = {
-        wheelPanelHeight: AppSizes.screen.height * 0.3,
+        wheelPanelHeight: Dimensions.get('window').height * 0.3,
         topBarHeight: scaleSize(80),
     };
 
@@ -57,7 +56,7 @@ export default class WheelPicker extends PureComponent {
         });
         this.bottomAnimate = this.state.showPicker.interpolate({
             inputRange: [0, 1],
-            outputRange: [-AppSizes.screen.height, 0],
+            outputRange: [-Dimensions.get('window').height, 0],
         });
         // setTimeout(() => {
         //     this.showPicker();
@@ -101,7 +100,7 @@ export default class WheelPicker extends PureComponent {
             <Animated.View
                 style={[
                     {
-                        height: AppSizes.screen.height,
+                        height: Dimensions.get('window').height,
                         opacity: this.opacityAnimate,
                         bottom: this.bottomAnimate,
                         backgroundColor: 'rgba(0,0,0,0.3)'
@@ -114,7 +113,7 @@ export default class WheelPicker extends PureComponent {
                     onPress={() => {
                         this.disMissPicker();
                     }}
-                    style={AppStyles.flex1}
+                    style={{ flex: 1 }}
                 />
                 {/* content */}
                 <View style={[styles.select_content, this.props.contentContainerStyle]}>
@@ -122,7 +121,7 @@ export default class WheelPicker extends PureComponent {
                     <View
                         style={[
                             { height: this.props.topBarHeight },
-                            styles.select_topBar, AppStyles.row,
+                            styles.select_topBar, { flexDirection: 'row' },
                             this.props.topBarStyle
                         ]}
                     >
@@ -218,21 +217,21 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
     select_content: {
-        width: AppSizes.screen.width,
+        width: Dimensions.get('window').width,
     },
     select_topBar: {
         alignItems: 'center',
         justifyContent: 'space-around',
-        backgroundColor: AppColors.white,
-        borderColor: AppColors.placeholder,
+        backgroundColor: '#FFFFFF',
+        borderColor: '#9B9B9B',
         borderTopWidth: scaleSize(1),
         borderBottomWidth: scaleSize(1),
-        width: AppSizes.screen.width,
+        width: Dimensions.get('window').width,
     },
     select_line: {
         backgroundColor: '#d5d5d5',
         height: scaleSize(1),
-        width: AppSizes.screen.width,
+        width: Dimensions.get('window').width,
         position: 'absolute',
     },
 });
