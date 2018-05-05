@@ -1,6 +1,6 @@
 {
   "name": "react-native-custom-picker-avery",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "this is a bottom picker like ActionSheet Picker,can use in Android  and IOS",
   "main": "index.js",
   "scripts": {
