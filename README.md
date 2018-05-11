@@ -1,17 +1,14 @@
 # react-native-custom-picker
 JS实现的底部弹出选择框，适用于Android和IOS双平台。
-## Demo
-
-<img src="https://raw.githubusercontent.com/d-a-n/react-native-modal-picker/master/docs/demo.gif" />
 
 ## Install
 
 ```sh
-npm i react-native-modal-picker --save
+npm i react-native-custon-picker-avery --save
 ```
 
 ## Usage
-
+以下内容还未更新， 是错误的
 You can either use this component as an wrapper around your existing component or use it in its default mode. In default mode a customizable button is rendered.
 
 See `SampleApp` for an example how to use this component.
