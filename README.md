@@ -9,6 +9,7 @@ npm i react-native-custon-picker-avery --save
 
 ## Usage
 以下内容还未更新， 是错误的
+
 You can either use this component as an wrapper around your existing component or use it in its default mode. In default mode a customizable button is rendered.
 
 See `SampleApp` for an example how to use this component.
