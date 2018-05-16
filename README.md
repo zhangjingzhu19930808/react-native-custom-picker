@@ -1,5 +1,6 @@
 # react-native-custom-picker
-JS实现的底部弹出选择框，适用于Android和IOS双平台。
+JS实现的底部弹出选择框，适用于Android和IOS双平台。可以高度自定义样式
+JS implementation of the bottom pop-up selection box for Android and IOS dual platform.Can be highly customized.
 
 ## Install
 
@@ -16,7 +17,7 @@ See `SampleApp` for an example how to use this component.
 
 ```jsx
 
-import ModalPicker from 'react-native-modal-picker'
+import WheelPicker from 'react-native-custom-picker-avery'
 
 [..]
 
@@ -26,51 +27,36 @@ class SampleApp extends Component {
         super();
 
         this.state = {
-            textInputValue: ''
+            textInputValue: '',
+            data: [{text: 1}, {text: 2}, {text: 3}],
         }
     }
+    
+    renderItem = (item, index) => (
+        <View>
+            <Text>item.text</Text>
+        </View>
+    );
 
     render() {
-        let index = 0;
-        const data = [
-            { key: index++, section: true, label: 'Fruits' },
-            { key: index++, label: 'Red Apples' },
-            { key: index++, label: 'Cherries' },
-            { key: index++, label: 'Cranberries' },
-            { key: index++, label: 'Pink Grapefruit' },
-            { key: index++, label: 'Raspberries' },
-            { key: index++, section: true, label: 'Vegetables' },
-            { key: index++, label: 'Beets' },
-            { key: index++, label: 'Red Peppers' },
-            { key: index++, label: 'Radishes' },
-            { key: index++, label: 'Radicchio' },
-            { key: index++, label: 'Red Onions' },
-            { key: index++, label: 'Red Potatoes' },
-            { key: index++, label: 'Rhubarb' },
-            { key: index++, label: 'Tomatoes' }
-        ];
-
         return (
             <View style={{flex:1, justifyContent:'space-around', padding:50}}>
-
-                <ModalPicker
-                    data={data}
-                    initValue="Select something yummy!"
-                    onChange={(option)=>{ alert(`${option.label} (${option.key}) nom nom nom`) }} />
-
-                <ModalPicker
-                    data={data}
-                    initValue="Select something yummy!"
-                    onChange={(option)=>{ this.setState({textInputValue:option.label})}}>
-                    
-                    <TextInput
-                        style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
-                        editable={false}
-                        placeholder="Select something yummy!"
-                        value={this.state.textInputValue} />
-                        
-                </ModalPicker>
-            </View>
+                <Text>显示picker</Text>
+                <WheelPicker
+                    ref={wheelPicker => {
+                        this.wheelPicker = wheelPicker;
+                    }}
+                    data={this.state.data}
+                    renderItem={this.renderItem}
+                    itemHeight={scaleSize(60)}
+                    onChangeSelected={(item) => {
+                        console.log('selectedItem:  ', item.text);
+                    }}
+                    onConfirmTextClick={(item) => {
+                        console.log('click confirm:  ', item.text);
+                    }}
+                />
+            </View>
         );
     }
 }
